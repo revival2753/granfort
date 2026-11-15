@@ -1,0 +1,686 @@
+		:root {
+			--bg: #2D2F2D;
+			--panel: #2D2F2D;
+			--green: #579d1c;
+			--green2: #539A1C;
+			--white: #ffffff;
+			--muted: #868686;
+			--line: #868686;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			margin: 0;
+			background: var(--bg);
+			color: var(--white);
+			font-family: Inter, Arial, sans-serif;
+			line-height: 1.55;
+			overflow-x: hidden;
+		}
+
+		body:before {
+			content: "";
+			position: fixed;
+			inset: 0;
+			pointer-events: none;
+			opacity: .38;
+			z-index: -1;
+			background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='900' viewBox='0 0 1200 900'%3E%3Cg fill='none' stroke='%23434f3c' stroke-width='1.2' opacity='.8'%3E%3Cpath d='M-80 125C130 190 260 20 470 65s280 190 480 120 230-35 330 5'/%3E%3Cpath d='M-80 290C120 360 270 180 475 220s300 205 490 140 235-10 335 40'/%3E%3Cpath d='M-80 510C150 570 270 390 490 420s290 210 510 145 210-20 300 40'/%3E%3Cpath d='M-80 710C130 760 300 610 500 635s300 190 510 135 230-5 310 50'/%3E%3C/g%3E%3C/svg%3E") center/cover;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+
+		button,
+		input,
+		textarea {
+			font: inherit;
+		}
+
+		.wrap {
+			width: min(1120px, calc(100% - 48px));
+			margin: auto;
+		}
+
+		/* ---------- Шапка ---------- */
+		.topbar {
+			height: 64px;
+			border-bottom: 1px solid #4b4e4a;
+			display: flex;
+			align-items: center;
+			position: sticky;
+			top: 0;
+			z-index: 20;
+			background: #292c29ed;
+			backdrop-filter: blur(12px);
+		}
+
+		.nav {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 28px;
+		}
+
+		.logo {
+			font-weight: 800;
+			letter-spacing: .16em;
+			font-size: 15px;
+			white-space: nowrap;
+		}
+
+		.logo span {
+			color: var(--green2);
+		}
+
+		.navlinks {
+			display: flex;
+			gap: 27px;
+			color: #a4a8a2;
+			font-size: 13px;
+		}
+
+		.navlinks a:hover {
+			color: white;
+		}
+
+		/* ---------- Кнопки ---------- */
+		.btn {
+			border: 1px solid var(--green);
+			background: var(--green);
+			color: white;
+			border-radius: 7px;
+			padding: 13px 22px;
+			font-weight: 700;
+			font-size: 14px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			transition: .2s;
+		}
+
+		.btn:hover {
+			background: #69ad29;
+			transform: translateY(-1px);
+		}
+
+		.btn.outline {
+			background: transparent;
+			color: var(--green2);
+		}
+
+		.btn.outline:hover {
+			background: #579d1c1a;
+		}
+
+		/* ---------- Hero ---------- */
+		.hero {
+			padding: 54px 0 88px;
+		}
+
+		.hero-grid {
+			display: grid;
+			grid-template-columns: 1.08fr .92fr;
+			gap: 42px;
+			align-items: center;
+		}
+
+		.hero h1 {
+			font-size: clamp(36px, 4.2vw, 54px);
+			line-height: 1.12;
+			letter-spacing: -.035em;
+			margin: 0 0 18px;
+			font-weight: 800;
+		}
+
+		.accent {
+			color: var(--green2);
+		}
+
+		.lead {
+			color: var(--muted);
+			font-size: 17px;
+			max-width: 560px;
+			margin: 0 0 25px;
+		}
+
+		.hero-photo {
+			width: 100%;
+			height: 360px;
+			object-fit: cover;
+			border-radius: 12px;
+		}
+
+		.actions {
+			display: flex;
+			gap: 12px;
+			flex-wrap: wrap;
+		}
+
+		.stats {
+			display: flex;
+			gap: 34px;
+			margin-top: 28px;
+		}
+
+		.stat strong {
+			display: block;
+			color: var(--green2);
+			font-size: 25px;
+			line-height: 1.2;
+		}
+
+		.stat small {
+			color: var(--muted);
+			font-size: 12px;
+		}
+
+		/* ---------- Секции ---------- */
+		section {
+			padding: 46px 0;
+		}
+
+		.section-title {
+			font-size: 30px;
+			line-height: 1.2;
+			margin: 0 0 12px;
+			letter-spacing: -.02em;
+		}
+
+		.section-intro {
+			color: var(--muted);
+			font-size: 14px;
+			max-width: 760px;
+			margin: 0 0 26px;
+		}
+
+		/* ---------- Товары ---------- */
+		.product-row {
+			display: grid;
+			grid-template-columns: 1.05fr .95fr;
+			gap: 28px;
+			align-items: center;
+			margin: 20px 0 26px;
+		}
+
+		.product-row.reverse .product-copy {
+			order: 0;
+		}
+
+		.product-row.reverse .product-gallery {
+			order: 1;
+		}
+
+		.product-gallery {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 8px;
+			position: relative;
+		}
+
+		.product-gallery img {
+			width: 100%;
+			height: 178px;
+			object-fit: cover;
+			border-radius: 8px;
+		}
+
+		.tag {
+			position: absolute;
+			top: 9px;
+			left: 9px;
+			background: var(--green);
+			padding: 4px 10px;
+			border-radius: 20px;
+			font-size: 11px;
+			font-weight: 700;
+		}
+
+		.product-copy h3 {
+			font-size: 24px;
+			margin: 0 0 10px;
+			border-left: 4px solid var(--green);
+			padding-left: 13px;
+		}
+
+		.product-copy p {
+			color: var(--muted);
+			font-size: 14px;
+			margin: 0 0 12px;
+		}
+
+		.pills {
+			display: flex;
+			gap: 7px;
+			flex-wrap: wrap;
+		}
+
+		.pill {
+			border: 1px solid var(--green);
+			color: #a8b39e;
+			border-radius: 30px;
+			padding: 3px 10px;
+			font-size: 11px;
+		}
+
+		/* ---------- Преимущества ---------- */
+		.benefits {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 22px;
+			margin: 28px 0;
+		}
+
+		.benefit {
+			border-top: 2px solid var(--green);
+			padding-top: 12px;
+		}
+
+		.benefit h4 {
+			margin: 0 0 7px;
+			font-size: 16px;
+		}
+
+		.benefit p,
+		.benefit li {
+			color: var(--muted);
+			font-size: 13px;
+		}
+
+		.benefit p {
+			margin: 0;
+		}
+
+		.benefit ul {
+			padding-left: 18px;
+			margin: 5px 0;
+		}
+
+		/* ---------- Шаги ---------- */
+		.steps {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 22px;
+			margin-top: 30px;
+		}
+
+		.step {
+			border-top: 2px solid var(--green);
+			padding-top: 10px;
+		}
+
+		.step b {
+			font-size: 24px;
+			color: var(--green2);
+		}
+
+		.step h4 {
+			margin: 0;
+			font-size: 15px;
+		}
+
+		.step p {
+			margin: 6px 0;
+			color: var(--muted);
+			font-size: 13px;
+		}
+
+		/* ---------- О компании ---------- */
+		.about-grid {
+			display: grid;
+			grid-template-columns: 1.1fr .9fr;
+			gap: 40px;
+			align-items: center;
+		}
+
+		.checklist {
+			padding: 0;
+			list-style: none;
+			color: var(--muted);
+			font-size: 14px;
+		}
+
+		.checklist li {
+			margin: 10px 0;
+		}
+
+		.checklist li:before {
+			content: "✓";
+			color: var(--green2);
+			font-weight: 800;
+			margin-right: 12px;
+		}
+
+		.workshop {
+			width: 100%;
+			height: 220px;
+			object-fit: cover;
+			border-radius: 10px;
+		}
+
+		/* ---------- Форма ---------- */
+		.request {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 44px;
+			align-items: center;
+			padding: 56px 0;
+		}
+
+		.request h2 {
+			font-size: 26px;
+			line-height: 1.25;
+			margin: 0 0 12px;
+		}
+
+		.request p {
+			color: var(--muted);
+			font-size: 14px;
+		}
+
+		.request p strong {
+			color: var(--green2);
+		}
+
+		.form {
+			display: grid;
+			gap: 10px;
+		}
+
+		.form input,
+		.form textarea {
+			width: 100%;
+			border: 1px solid #d9dbd8;
+			background: #fff;
+			color: #292c29;
+			padding: 14px 15px;
+			border-radius: 6px;
+			outline: none;
+		}
+
+		.form input:focus,
+		.form textarea:focus {
+			border-color: var(--green2);
+			box-shadow: 0 0 0 3px #579d1c22;
+		}
+
+		.form textarea {
+			height: 100px;
+			resize: vertical;
+		}
+
+		.form .btn {
+			width: 100%;
+			padding: 14px;
+		}
+
+		.form-note {
+			font-size: 12px;
+			color: var(--muted);
+			margin: 0;
+		}
+
+		/* ---------- FAQ ---------- */
+		.faq-list {
+			display: grid;
+			gap: 9px;
+			margin-top: 22px;
+		}
+
+		.faq-item {
+			background: #f7f8f6;
+			color: #333;
+			border-radius: 8px;
+			overflow: hidden;
+		}
+
+		.faq-q {
+			width: 100%;
+			border: 0;
+			background: none;
+			text-align: left;
+			padding: 15px 18px;
+			color: #578d2c;
+			font-weight: 700;
+			cursor: pointer;
+			display: flex;
+			justify-content: space-between;
+			gap: 20px;
+		}
+
+		.faq-q span:last-child {
+			font-size: 20px;
+			line-height: 1;
+		}
+
+		.faq-a {
+			display: none;
+			color: #858984;
+			padding: 0 18px 15px;
+			font-size: 13px;
+		}
+
+		.faq-item.open .faq-a {
+			display: block;
+		}
+
+		.faq-item.open .faq-q span:last-child {
+			transform: rotate(45deg);
+		}
+
+		/* ---------- Контакты ---------- */
+		.contacts {
+			padding: 54px 0 20px;
+		}
+
+		.contact-grid {
+			display: grid;
+			grid-template-columns: .75fr 1.25fr;
+			gap: 50px;
+			align-items: start;
+		}
+
+		.contact-list {
+			display: grid;
+			gap: 14px;
+		}
+
+		.contact-list strong {
+			display: block;
+			font-size: 14px;
+		}
+
+		.contact-list span,
+		.contact-list a {
+			color: var(--muted);
+			font-size: 14px;
+		}
+
+		.map {
+			height: 320px;
+			border: 0;
+			border-radius: 10px;
+			width: 100%;
+			background: #e8e9e7;
+		}
+
+		.map-wrap {
+			position: relative;
+		}
+
+		.map-caption {
+			font-size: 12px;
+			color: var(--muted);
+			margin-top: 8px;
+		}
+
+		/* ---------- Подвал ---------- */
+		.footer {
+			padding: 38px 0 24px;
+			color: #858a83;
+			font-size: 12px;
+		}
+
+		.footer-inner {
+			border-top: 1px solid #424740;
+			padding-top: 20px;
+			display: flex;
+			justify-content: space-between;
+			gap: 20px;
+			flex-wrap: wrap;
+		}
+
+		.mobile-menu {
+			display: none;
+		}
+
+		/* ---------- Адаптив ---------- */
+		@media (max-width: 800px) {
+			.navlinks {
+				gap: 13px;
+				font-size: 12px;
+			}
+
+			.hero-grid,
+			.about-grid,
+			.request,
+			.contact-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.hero {
+				padding-top: 38px;
+			}
+
+			.hero-photo {
+				height: 300px;
+			}
+
+			.product-row {
+				grid-template-columns: 1fr;
+			}
+
+			.product-row.reverse .product-copy,
+			.product-row.reverse .product-gallery {
+				order: initial;
+			}
+
+			.product-gallery img {
+				height: 200px;
+			}
+
+			.steps {
+				gap: 12px;
+			}
+
+			.request {
+				gap: 18px;
+			}
+
+			.contact-grid {
+				gap: 25px;
+			}
+		}
+
+		@media (max-width: 560px) {
+			.wrap {
+				width: min(100% - 32px, 1120px);
+			}
+
+			.topbar {
+				height: auto;
+				min-height: 60px;
+			}
+
+			.nav {
+				padding: 12px 0;
+				flex-wrap: wrap;
+			}
+
+			.navlinks {
+				order: 3;
+				width: 100%;
+				overflow: auto;
+				padding: 3px 0 5px;
+			}
+
+			.nav > .btn {
+				padding: 9px 13px;
+				font-size: 12px;
+			}
+
+			.hero h1 {
+				font-size: 36px;
+			}
+
+			.hero-grid {
+				gap: 24px;
+			}
+
+			.hero-photo {
+				height: 240px;
+			}
+
+			.lead {
+				font-size: 15px;
+			}
+
+			.stats {
+				gap: 18px;
+				justify-content: space-between;
+			}
+
+			.stat strong {
+				font-size: 20px;
+			}
+
+			.stat small {
+				font-size: 10px;
+			}
+
+			.section-title {
+				font-size: 26px;
+			}
+
+			.product-gallery img {
+				height: 145px;
+			}
+
+			.benefits {
+				grid-template-columns: 1fr;
+			}
+
+			.steps {
+				grid-template-columns: 1fr;
+			}
+
+			.workshop {
+				height: 190px;
+			}
+
+			.request h2 {
+				font-size: 23px;
+			}
+
+			.map {
+				height: 270px;
+			}
+
+			.footer-inner {
+				display: block;
+			}
+
+			.footer-inner div + div {
+				margin-top: 12px;
+			}
+		}

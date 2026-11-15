@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="ГРАНФОРТ — защита бамперов из нержавеющей стали и чёрного металла для внедорожников и пикапов из Китая.">
+	<title>ГРАНФОРТ — защита бамперов для внедорожников</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+  <link rel="scri" href="">
+  <link rel="icon" href="assets/workshop.png">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+	<header class="topbar">
+		<div class="wrap nav">
+			<a class="logo" href="#top">ГРАНФОРТ<span>.</span></a>
+			<nav class="navlinks" aria-label="Основная навигация">
+				<a href="#products">Продукция</a>
+				<a href="#about">О компании</a>
+				<a href="#request">Запись</a>
+				<a href="#faq">Вопросы</a>
+				<a href="#contacts">Контакты</a>
+			</nav>
+			<div class="navlinks">
+			<a class="btn" href="#request">Связаться</a>
+			<a class="btn" style="background-color: gray; border-color: gray;" href="/login">войти</a>
+			</div>
+			
+		</div>
+	</header>
+
+	<main id="top">
+
+		<div class="wrap hero">
+			<div class="hero-grid">
+				<div>
+					<h1>Защита бамперов для <span class="accent">внедорожников и пикапов</span> из Китая</h1>
+					<p class="lead">Нержавеющая сталь AISI 304 с зеркальной полировкой и чёрный металл с порошковым покрытием. Ставится без сверления кузова и служит десятилетиями.</p>
+					<div class="actions">
+						<a class="btn" href="#products">Смотреть продукцию</a>
+						<a class="btn outline" href="#request">Заказать под свою модель</a>
+					</div>
+					<div class="stats">
+						<div class="stat">
+							<strong>30 лет</strong>
+							<small>срок службы стали</small>
+						</div>
+						<div class="stat">
+							<strong>AISI 304</strong>
+							<small>нержавеющая сталь</small>
+						</div>
+						<div class="stat">
+							<strong>0 отверстий</strong>
+							<small>в кузове при установке</small>
+						</div>
+					</div>
+				</div>
+				<img class="hero-photo" src="assets/hero-jac-t9.png" alt="Чёрный пикап JAC T9 с защитой бампера">
+			</div>
+		</div>
+
+		<section id="products">
+			<div class="wrap">
+				<h2 class="section-title">Продукция</h2>
+				<p class="section-intro">Защита бампера из нержавеющей стали служит минимум 30 лет: металл не ржавеет от воды, снега и дорожных реагентов и не теряет прочность. Мы делаем её так, чтобы она оставалась целой и выглядела хорошо весь срок владения машиной.</p>
+
+				{% for p in products %}
+				<article class="product-row{{ ' reverse' if loop.index is even }}">
+					<div class="product-gallery">
+					
+						{% if p.image_1 %}<img src="/{{ p.image_1.name }}" alt="{{ p.name }}">{% endif %}
+						{% if p.image_2 %}<img src="/{{ p.image_2.name }}" alt="{{ p.name }}, вид 2">{% endif %}
+					</div>
+					<div class="product-copy">
+						<h3>{{ p.name }}</h3>
+						<p>{{ p.description or '' }}</p>
+						<div class="pills">
+							{% for f in p.features_list %}<span class="pill">{{ f }}</span>
+							{% endfor %}
+						</div>
+					</div>
+				</article>
+				{% endfor %}
+
+				<div class="benefits">
+					<div class="benefit">
+						<h4>Нержавеющая сталь AISI 304</h4>
+						<p>Нержавейка с зеркальной полировкой.</p>
+						<ul>
+							<li>не ржавеет и не боится реагентов</li>
+							<li>сохраняет блеск, легко моется</li>
+							<li>выдерживает удары и нагрузку</li>
+						</ul>
+					</div>
+					<div class="benefit">
+						<h4>Чёрный металл с порошковой окраской</h4>
+						<p>Более доступный вариант в строгом чёрном цвете.</p>
+						<ul>
+							<li>плотное порошковое покрытие</li>
+							<li>устойчиво к сколам и царапинам</li>
+							<li>защищает металл от коррозии</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="steps">
+					<div class="step">
+						<b>01</b>
+						<h4>Качество материала</h4>
+						<p>Берём проверенную сталь и следим за сварными швами и полировкой.</p>
+					</div>
+					<div class="step">
+						<b>02</b>
+						<h4>Без сверления</h4>
+						<p>Крепление на штатные места, кузов остаётся нетронутым.</p>
+					</div>
+					<div class="step">
+						<b>03</b>
+						<h4>Установка под ключ</h4>
+						<p>Купите комплект или закажите монтаж у нас.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="about">
+			<div class="wrap">
+				<h2 class="section-title">О компании</h2>
+				<p class="section-intro">Мы производим элементы автомобильного тюнинга. Сейчас основной продукт — защита передних и задних бамперов для китайских внедорожников и пикапов. Спрос на это направление быстро растёт, а готовых решений пока нет.</p>
+				<div class="about-grid">
+					<ul class="checklist">
+						<li>Собственное производство, контроль на каждом этапе</li>
+						<li>Готовые комплекты для JAC T9 и Haval H3</li>
+						<li>Разработка защиты под другие модели по запросу</li>
+						<li>Доставка по всей России</li>
+						<li>Продажа комплектом или установка под ключ</li>
+					</ul>
+					<img class="workshop" src="assets/workshop.png" alt="Производственный цех ГРАНФОРТ">
+				</div>
+			</div>
+		</section>
+
+		<section id="request">
+			<div class="wrap request">
+				<div>
+					<h2>Изготовим защиту бампера под ваш автомобиль.</h2>
+					<p>Снимем размеры, подготовим чертёж, согласуем его с вами и изготовим комплект, который встанет без сверления и доработки кузова. Подойдёт и для редких моделей китайских внедорожников и пикапов.</p>
+					<p><strong>Напишите марку, модель и год выпуска машины</strong>, и мы расскажем, как будет выглядеть защита, сроки и стоимость.</p>
+				</div>
+				<form class="form" id="leadForm">
+					<input name="name" placeholder="ФИО" autocomplete="name" required>
+					<input name="phone" id="phone" placeholder="Номер телефона" type="tel" maxlength="11" inputmode="numeric" required>
+					<textarea name="car" placeholder="Марка, модель и год выпуска машины" required></textarea>
+					<button class="btn" type="submit">Отправить</button>
+					<p class="form-note" id="formNote" aria-live="polite">Нажимая «Отправить», вы соглашаетесь на обработку персональных данных.</p>
+				</form>
+			</div>
+		</section>
+
+		<section id="faq">
+			<div class="wrap">
+				<h2 class="section-title">Частые вопросы</h2>
+				<p class="section-intro">Коротко о том, что обычно спрашивают перед покупкой.</p>
+				<div class="faq-list">
+					<div class="faq-item open">
+						<button class="faq-q">
+							<span>Сколько служит защита бампера?</span>
+							<span>+</span>
+						</button>
+						<div class="faq-a">Бампер из нержавеющей стали AISI 304 при обычной эксплуатации служит минимум 30 лет: сталь не ржавеет от влаги, снега и дорожной химии.</div>
+					</div>
+					<div class="faq-item">
+						<button class="faq-q">
+							<span>Нужно ли сверлить кузов?</span>
+							<span>+</span>
+						</button>
+						<div class="faq-a">Нет. Защита крепится на штатные места, кузов не дорабатывается, а при необходимости её можно снять.</div>
+					</div>
+					<div class="faq-item">
+						<button class="faq-q">
+							<span>Чем нержавейка отличается от окрашенного металла?</span>
+							<span>+</span>
+						</button>
+						<div class="faq-a">Нержавейка не подвержена коррозии и имеет зеркальный блеск. Чёрный металл с порошковым покрытием дешевле и даёт строгий матовый вид, а покрытие защищает его от ржавления.</div>
+					</div>
+					<div class="faq-item">
+						<button class="faq-q">
+							<span>Зеркальная полировка не потускнеет?</span>
+							<span>+</span>
+						</button>
+						<div class="faq-a">Достаточно периодически мыть бампер. Если на поверхности появятся мелкие царапины, их можно убрать полировкой.</div>
+					</div>
+					<div class="faq-item">
+						<button class="faq-q">
+							<span>Можно ли заказать установку?</span>
+							<span>+</span>
+						</button>
+						<div class="faq-a">Да, можно купить комплект отдельно или заказать установку под ключ.</div>
+					</div>
+					<div class="faq-item">
+						<button class="faq-q">
+							<span>Есть ли доставка?</span>
+							<span>+</span>
+						</button>
+						<div class="faq-a">Да, отправляем продукцию по всей России.</div>
+					</div>
+					<div class="faq-item">
+						<button class="faq-q">
+							<span>Сделаете защиту под мою модель?</span>
+							<span>+</span>
+						</button>
+						<div class="faq-a">Если вашей машины нет в списке, оставьте запрос — рассмотрим индивидуальную разработку.</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ---------- Контакты ---------- -->
+		<section class="contacts" id="contacts">
+			<div class="wrap">
+				<h2 class="section-title">Контакты</h2>
+				<div class="contact-grid">
+					<div class="contact-list">
+						<div>
+							<strong>Адрес</strong>
+							<span>г. Тольятти, ул. Мурысева, д. 84</span>
+						</div>
+						<div>
+							<strong>График работы</strong>
+							<span>Пн–Пт: 9:00–18:00<br>Сб–Вс: выходной</span>
+						</div>
+						<div>
+							<strong>Телефон</strong>
+							<a href="tel:+70000000000">+7 (000) 000-00-00</a>
+						</div>
+						<div>
+							<strong>ВКонтакте</strong>
+							<a href="https://vk.com/granfort" target="_blank" rel="noopener">vk.com/granfort</a>
+						</div>
+						<div>
+							<strong>Email</strong>
+							<a href="mailto:info@granfort.ru">info@granfort.ru</a>
+						</div>
+					</div>
+					<div class="map-wrap">
+						<iframe class="map" title="Карта — ГРАНФОРТ, Тольятти, улица Мурысева, 84" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=%D0%A2%D0%BE%D0%BB%D1%8C%D1%8F%D1%82%D1%82%D0%B8%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9C%D1%83%D1%80%D1%8B%D1%81%D0%B5%D0%B2%D0%B0%2C%2084&output=embed"></iframe>
+						<div class="map-caption">Метка показывает адрес из макета. Уточните точное расположение входа/производства перед публикацией.</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</main>
+
+	<footer class="footer">
+		<div class="wrap footer-inner">
+			<div>© ГРАНФОРТ 2026. Все права защищены.</div>
+			<div>Продолжая работу с сайтом, вы даёте согласие на использование cookies и обработку персональных данных.</div>
+		</div>
+	</footer>
+
+<script>
+          document.querySelectorAll('.faq-q').forEach(button => {
+			button.addEventListener('click', () => button.parentElement.classList.toggle('open'));
+		});
+
+		document.getElementById('leadForm').addEventListener('submit', e => {
+			e.preventDefault();
+			document.getElementById('formNote').textContent = 'Спасибо! Заявка заполнена. С вами скоро свяжутся.';
+			e.currentTarget.reset();
+		});
+
+    const phone = document.getElementById('phone');
+
+    phone.addEventListener('input', () => {
+      phone.value = phone.value.replace(/\D/g, '');
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="robots" content="noindex">
+	<title>Вход — ГРАНФОРТ</title>
+	<link rel="icon" href="assets/workshop.png">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--bg: #2D2F2D;
+			--green: #579d1c;
+			--green2: #539A1C;
+			--muted: #868686;
+			--line: rgba(134, 134, 134, .45);
+		}
+
+		* { box-sizing: border-box; }
+
+		body {
+			margin: 0;
+			min-height: 100vh;
+			display: grid;
+			place-items: center;
+			padding: 24px;
+			background: var(--bg);
+			color: #fff;
+			font-family: Inter, Arial, sans-serif;
+			line-height: 1.5;
+		}
+
+		.box { width: min(380px, 100%); }
+
+		.logo {
+			display: inline-block;
+			font-weight: 700;
+			font-size: 14px;
+			letter-spacing: .2em;
+			color: #fff;
+			text-decoration: none;
+		}
+
+		.logo span { color: var(--green2); }
+
+		h1 {
+			margin: 56px 0 32px;
+			font-size: 40px;
+			font-weight: 600;
+			letter-spacing: -.03em;
+			line-height: 1.1;
+		}
+
+		form { display: grid; gap: 6px; }
+
+		input {
+			width: 100%;
+			padding: 18px 0;
+			border: 0;
+			border-bottom: 1px solid var(--line);
+			border-radius: 0;
+			background: transparent;
+			color: #fff;
+			font: inherit;
+			outline: none;
+			transition: border-color .2s;
+		}
+
+		input::placeholder { color: var(--muted); }
+		input:focus { border-bottom-color: var(--green); }
+
+		input:-webkit-autofill {
+			-webkit-text-fill-color: #fff;
+			box-shadow: 0 0 0 1000px var(--bg) inset;
+		}
+
+		.error {
+			margin: 10px 0 0;
+			font-size: 13px;
+			color: #fff;
+			border-left: 2px solid var(--green);
+			padding-left: 10px;
+		}
+
+		button {
+			margin-top: 28px;
+			padding: 16px;
+			border: 0;
+			border-radius: 2px;
+			background: var(--green);
+			color: #fff;
+			font: inherit;
+			font-weight: 600;
+			cursor: pointer;
+			transition: background .2s;
+		}
+
+		button:hover { background: #69ad29; }
+
+		.back {
+			display: inline-block;
+			margin-top: 28px;
+			font-size: 13px;
+			color: var(--muted);
+			text-decoration: none;
+		}
+
+		.back:hover { color: #fff; }
+	</style>
+</head>
+<body>
+
+	<main class="box">
+		<a class="logo" href="/">ГРАНФОРТ<span>.</span></a>
+		<h1>Вход</h1>
+
+		<!-- action="/login" и name="username" / name="password" должны совпадать с кодом на бэкенде -->
+		<form method="post" action="/login">
+			<input name="username" placeholder="Логин" autocomplete="username" required autofocus>
+			<input name="password" type="password" placeholder="Пароль" autocomplete="current-password" required>
+			<p class="error" id="err" hidden>Неверный логин или пароль</p>
+			<button type="submit">Войти</button>
+		</form>
+
+		<a class="back" href="/">← На сайт</a>
+	</main>
+
+	<script>
+		if (location.search.includes('error')) document.getElementById('err').hidden = false;
+	</script>
+
+</body>
+</html>
